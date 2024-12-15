@@ -1,0 +1,572 @@
+:root {
+    --primary-color: #0077ff;
+    --secondary-color: #00f0b5;
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --card-bg: #1e1e1e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.nav-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+/*Sessão sobre mim*/
+#sobre-mim {
+    background: linear-gradient(135deg, var(--bg-color), #1e1e1e);
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sobre-container {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    gap: 3rem;
+}
+
+.sobre-avatar {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.avatar-imagem {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid var(--primary-color);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+.avatar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 30%, rgba(18, 18, 18, 0.8) 100%);
+    border-radius: 50%;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.sobre-avatar:hover .avatar-overlay {
+    opacity: 0.3;
+}
+
+.sobre-texto {
+    flex: 1;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+.sobre-titulo {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.sobre-subtitulo {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.sobre-descricao {
+    color: #d0d0d0;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.habilidades-titulo {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.habilidades-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.habilidade-tag {
+    background-color: rgba(0, 119, 255, 0.2);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.habilidade-tag:hover {
+    transform: scale(1.1);
+}
+
+.botoes-acoes {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.botao-padrao {
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.botao-cv {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+}
+
+.botao-cv:hover {
+    background-color: var(--secondary-color);
+}
+
+.botao-contato {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.botao-contato:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+}
+
+@media (max-width: 1024px) {
+    .sobre-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .sobre-avatar {
+        margin-bottom: 2rem;
+    }
+
+    .botoes-acoes {
+        justify-content: center;
+    }
+}
+
+/*Sessão projetos*/
+#projetos {
+    background: linear-gradient(135deg, #1e1e1e, var(--bg-color));
+    padding: 4rem 2rem;
+}
+
+.projetos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projeto-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.projeto-card:hover {
+    transform: scale(1.05);
+}
+
+.projeto-imagem {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.projeto-info {
+    padding: 1rem;
+}
+
+.projeto-titulo {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.projeto-descricao {
+    color: #b0b0b0;
+    margin-bottom: 1rem;
+}
+
+.projeto-tecnologias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tecnologia-tag {
+    background-color: rgba(0, 119, 255, 0.2);
+    color: var(--primary-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+.projeto-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.projeto-link {
+    text-decoration: none;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .projetos-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/*Sessão experiencias*/
+#experiencias {
+    background: linear-gradient(135deg, var(--bg-color), #1e1e1e);
+    padding: 4rem 2rem;
+}
+
+.experiencias-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.experiencia-linha {
+    position: relative;
+    padding-bottom: 2rem;
+    border-left: 2px solid var(--primary-color);
+    padding-left: 30px;
+}
+
+.experiencia-linha:last-child {
+    border-left-color: transparent;
+}
+
+.experiencia-item {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.experiencia-item:hover {
+    transform: translateX(10px);
+}
+
+.experiencia-item::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    left: -45px;
+    top: 20px;
+    border: 4px solid var(--bg-color);
+}
+
+.experiencia-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.experiencia-titulo {
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.experiencia-periodo {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+.experiencia-empresa {
+    color: #b0b0b0;
+    margin-bottom: 0.5rem;
+}
+
+.experiencia-descricao {
+    color: #d0d0d0;
+    line-height: 1.6;
+}
+
+.tecnologias-utilizadas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.tecnologia-tag {
+    background-color: rgba(0, 119, 255, 0.2);
+    color: var(--primary-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .experiencia-linha {
+        padding-left: 20px;
+    }
+    
+    .experiencia-item::before {
+        left: -35px;
+    }
+}
+/*Fim da sessão experiencias*/
+
+/*Sessão de contatos*/
+#contato {
+    background: linear-gradient(135deg, #1e1e1e, var(--bg-color));
+    padding: 4rem 2rem;
+}
+
+.contato-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+.contato-informacoes {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    width: 400px;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+.contato-titulo {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.contato-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.contato-item i {
+    color: var(--primary-color);
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    width: 40px;
+    text-align: center;
+}
+
+.contato-formulario {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    width: 500px;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+.formulario-grupo {
+    margin-bottom: 1rem;
+}
+
+.formulario-input {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--input-bg);
+    border: none;
+    border-radius: 5px;
+    color: var(--text-color);
+    transition: box-shadow 0.3s ease;
+}
+
+.formulario-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.formulario-textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.botao-enviar {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.botao-enviar:hover {
+    background-color: var(--secondary-color);
+}
+
+.redes-sociais {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.rede-social-link {
+    color: var(--text-color);
+    font-size: 2rem;
+    transition: color 0.3s ease;
+}
+
+.rede-social-link:hover {
+    color: var(--primary-color);
+}
+
+@media (max-width: 1024px) {
+    .contato-container {
+        flex-direction: column;
+    }
+
+    .contato-informacoes,
+    .contato-formulario {
+        width: 100%;
+        max-width: 500px;
+    }
+}
+/*Fim da sessão de experiencias*/
+
+
+.section-content {
+    text-align: center;
+    max-width: 800px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links, .social-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
